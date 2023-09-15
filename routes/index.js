@@ -14,6 +14,7 @@ router
 router
     .route("/:username")
     .get(controllers.getId)
+    .delete(controllers.deleteUser)
 router
     .route("/:username/:password")
     .get(controllers.getLogin)

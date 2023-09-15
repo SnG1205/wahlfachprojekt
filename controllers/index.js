@@ -136,3 +136,18 @@ exports.deleteMessage = (req, res, next) => {
         }
     );
 };
+
+exports.deleteUser = (req, res, next) => {
+    console.log(req.params)
+    conn.query(
+        "DELETE FROM login WHERE username = ?",
+        [req.params.username],
+        function (err, data, fields) {
+            if (err) return next(new AppError(err, 500));
+            res.status(201).json({
+                status: "success",
+                message: "User was deleted successfully"
+            });
+        }
+    );
+};
